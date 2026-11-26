@@ -1,6 +1,6 @@
 {
-    "name": "erp_client",
-    "short_name": "erp_client",
+    "name": "RTS ERP",
+    "short_name": "RTS ERP",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

@@ -1,54 +1,43 @@
-name: erp_client
-description: "Enterprise Resource Planning (ERP) System Client Application."
-publish_to: 'none'
-
-# Versioning: [Major].[Minor].[Patch]+[Build Number]
-version: 1.0.0+1
+name: rts_erp_mobile
+description: ResponsivCode ERP field app (Flutter) — same Laravel API as the office web UI.
+publish_to: "none"
+version: 0.1.0+1
 
 environment:
-  sdk: ^3.9.2
+  sdk: ">=3.3.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-
-  # State Management & Routing
-  get: ^4.7.3
-  get_storage: ^2.1.1
-
-  # API & Networking
-  dio: ^5.11.0
-
-  # Configuration & Environment Variables
-  flutter_dotenv: ^6.0.1
-
-  # Globalization & UI Utilities
-  intl: ^0.20.3
-  google_fonts: ^8.1.0
-  lucide_icons: ^0.257.0
-
-  # Icons
   cupertino_icons: ^1.0.8
+  http: ^1.2.2
+  http_parser: ^4.0.2
+  shared_preferences: ^2.3.3
+  provider: ^6.1.2
+  image_picker: ^1.1.2
+  intl: ^0.19.0
+  pdf: ^3.13.0
+  printing: ^5.15.0
+  mobile_scanner: ^7.4.2
+  flutter_dotenv: ^5.2.1
+  google_fonts: ^6.2.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
+  flutter_launcher_icons: ^0.14.3
+
+flutter_launcher_icons:
+  android: true
+  ios: false
+  image_path: assets/logo.png
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: assets/logo.png
+  adaptive_icon_foreground_inset: 30
 
 flutter:
   uses-material-design: true
-
-  # Assets Configuration
   assets:
+    - assets/logo.png
     - .env
-    # Add your image folders here as you progress, for example:
-    # - assets/images/
-    # - assets/logos/
-
-  # Custom Fonts Configuration (Uncomment when adding local fonts)
-  # fonts:
-  #   - family: YourCustomFont
-  #     fonts:
-  #       - asset: assets/fonts/YourFont-Regular.ttf
-  #       - asset: assets/fonts/YourFont-Bold.ttf
-  #         weight: 700

@@ -1,0 +1,50 @@
+# Phone cannot open http://192.168.1.60:8000/api/mobile/health
+
+Your PC server is OK if that URL works in Chrome ON THE PC.
+If it fails ON THE PHONE only, the Wi‑Fi router is usually blocking phone→PC traffic
+(client isolation / guest network), even when Windows Firewall is open.
+
+Pick ONE path below.
+
+================================================================================
+OPTION A — USB (Android, fastest for Flutter dev)
+================================================================================
+1. Enable Developer options + USB debugging on the phone.
+2. Connect USB; accept the debugging prompt on the phone.
+3. From PC (with platform-tools/adb in PATH):
+
+   adb reverse tcp:8000 tcp:8000
+
+4. In the app: Login → Server → enter:  127.0.0.1:8000  → Test → Save & connect
+5. Phone browser test: http://127.0.0.1:8000/api/mobile/health
+
+Re-run adb reverse after each USB reconnect.
+
+================================================================================
+OPTION B — PC mobile hotspot (bypasses router isolation)
+================================================================================
+1. Windows Settings → Network & internet → Mobile hotspot → ON
+2. Connect the phone to that hotspot (not the house Wi‑Fi).
+3. On PC run:  ipconfig
+   Find "Local Area Connection* XX" or "vEthernet" / hotspot adapter — often 192.168.137.1
+4. On phone open: http://192.168.137.1:8000/api/mobile/health
+5. In the app Server field use that IP:8000 (not 192.168.1.60).
+
+================================================================================
+OPTION C — Same router Wi‑Fi (fix LAN)
+================================================================================
+- Phone and PC must be on the SAME SSID (not Guest / IoT / “5G guest”).
+- Turn OFF mobile data on the phone while testing.
+- On phone: can you ping 192.168.1.60? (Termux or network tools app)
+  If ping fails, the router blocks device-to-device — use Option A or B.
+- Router admin: disable "AP isolation" / "client isolation" / "wireless isolation".
+
+================================================================================
+PC checklist (always)
+================================================================================
+1. WAMP MySQL running
+2. cd C:\ERP-System-main\erp-server && npm start
+3. Firewall (once, as Admin): scripts\open-firewall-windows-admin.bat
+4. PC browser: http://192.168.1.60:8000/api/mobile/health → JSON ok
+
+================================================================================
